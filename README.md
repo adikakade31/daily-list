@@ -19,7 +19,7 @@ Video Walkthrough-
 
 Here's a walkthrough of implemented user stories:
 
-<img src='file:///Users/aditikakadebansal/Desktop/daily-list.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://cloud.githubusercontent.com/assets/22045135/18651962/96a3d916-7e83-11e6-8bfa-ee6d24f7ee20.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
