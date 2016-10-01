@@ -13,11 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Edit Item Below :"
+        android:text="@string/edit_item"
         android:id="@+id/editItemLabel"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/font_size"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -27,15 +28,19 @@
         android:id="@+id/editItemText"
         android:layout_below="@+id/editItemLabel"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/font_size"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         android:id="@+id/editItemButton"
         android:onClick="onSaveItem"
         android:layout_below="@+id/editItemText"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="@dimen/font_size"
+       />
 </RelativeLayout>
