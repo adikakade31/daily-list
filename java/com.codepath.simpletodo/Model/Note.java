@@ -2,7 +2,6 @@ package com.codepath.simpletodo.Model;
 
 import android.database.Cursor;
 
-import com.codepath.simpletodo.IDBOperations;
 import com.codepath.simpletodo.ISimpleTodoEntity;
 import com.codepath.simpletodo.PostsDatabaseHelper;
 
@@ -59,10 +58,4 @@ public class Note
         return PostsDatabaseHelper.TABLE_NOTE;
     }
 
-    public List<String> getAddStatements() {
-        return null;
-    }
-    public List<String> getDeleteStatements() {
-        return null;
-    }
 }
