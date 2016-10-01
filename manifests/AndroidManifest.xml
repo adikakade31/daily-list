@@ -4,18 +4,32 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_lock_white_36dp"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        >
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".EditItemActivity"></activity>
+        <activity android:name=".NotesTabActivity"></activity>
+        <activity android:name=".TodosTabActivity"></activity>
+        <activity android:name=".AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.codepath.simpletodo.ALARMRECIEVER" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+        <receiver android:process=":remote" android:name=".AlarmReceiver"></receiver>
     </application>
 
 </manifest>
