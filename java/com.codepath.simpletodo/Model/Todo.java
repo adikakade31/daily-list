@@ -16,7 +16,7 @@ import java.util.Date;
  * Created by aditikakadebansal on 9/23/16.
  */
 public class Todo
-        implements IDBOperations, ISimpleTodoEntity {
+        implements ISimpleTodoEntity {
 
     private String description;
     private long primaryKey;
