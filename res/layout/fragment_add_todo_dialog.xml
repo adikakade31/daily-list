@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:minWidth="1000dp"
+    android:minHeight="1000dp">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:minWidth="1000dp"
+        android:minHeight="1000dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:id="@+id/linearLayout3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/due_date_label"
+            android:fontFamily="sans-serif"
+            android:id="@+id/datePickerLabel"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/font_size"/>
+
+        <DatePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:layout_marginTop="-50dp"
+            android:id="@+id/todoDatePicker"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/font_size"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reminder_label"
+            android:fontFamily="sans-serif"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/timePickerLabel"
+            android:textSize="@dimen/font_size"/>
+
+        <TimePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:layout_marginTop="-50dp"
+            android:id="@+id/todoTimePicker"
+            android:timePickerMode="spinner"
+            android:layout_below="@+id/todoDatePicker"
+            android:layout_alignLeft="@+id/todoDatePicker"
+            android:layout_alignStart="@+id/todoDatePicker"
+            android:textSize="@dimen/font_size"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/newTodoEditText"
+        android:fontFamily="sans-serif"
+        android:hint="@string/add_todo"
+        android:width="700dp"
+        android:layout_above="@+id/saveTodoButton"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/font_size"
+        android:textColorHighlight="#ffffff"
+        android:background="#000000"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="50dp"
+        />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveTodoButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="70dp"
+        android:textSize="@dimen/font_size"
+        android:background="@drawable/ic_done_white_24dp"
+        android:layout_marginBottom="30dp"
+        />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/deleteTodoButton"
+        android:textSize="@dimen/font_size"
+        android:background="@drawable/ic_delete_white_24dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="70dp"
+        android:layout_marginBottom="30dp"/>
+
+</RelativeLayout>
