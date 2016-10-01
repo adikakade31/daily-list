@@ -8,22 +8,22 @@ import android.widget.EditText;
 
 public class EditItemActivity extends AppCompatActivity {
 
-    EditText editItemText;
+    EditText editNoteDescription;
     int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
-        String itemText = getIntent().getStringExtra("itemText");
-        position = getIntent().getIntExtra("position",0);
-        editItemText = (EditText) findViewById(R.id.editItemText);
-        editItemText.setText(itemText);
+        String itemText = getIntent().getStringExtra(CommonConstants.itemText);
+        position = getIntent().getIntExtra(CommonConstants.position,0);
+        editNoteDescription = (EditText) findViewById(R.id.editItemText);
+        editNoteDescription.setText(itemText);
 
     }
     public void onSaveItem(View view){
         Intent data = new Intent();
-        data.putExtra("itemText", editItemText.getText().toString());
-        data.putExtra("position", position);
+        data.putExtra(CommonConstants.itemText, editNoteDescription.getText().toString());
+        data.putExtra(CommonConstants.position, position);
         setResult(RESULT_OK, data);
         finish();
     }
