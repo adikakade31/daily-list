@@ -2,8 +2,6 @@ package com.codepath.simpletodo.Model;
 
 import android.database.Cursor;
 
-import com.codepath.simpletodo.AlarmReceiver;
-import com.codepath.simpletodo.IDBOperations;
 import com.codepath.simpletodo.ISimpleTodoEntity;
 import com.codepath.simpletodo.PostsDatabaseHelper;
 
@@ -96,15 +94,11 @@ public class Todo
                 cursor.getString(cursor.getColumnIndex(PostsDatabaseHelper.DEADLINE)));
     }
 
+
+
     @Override
     public String getTableName() {
         return PostsDatabaseHelper.TABLE_TODO;
     }
 
-    public List<String> getAddStatements() {
-        return null;
-    }
-    public List<String> getDeleteStatements() {
-        return null;
-    }
 }
