@@ -1,11 +1,28 @@
-<resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+
+    <!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!-- Base application theme. -->
+<style name="AppTheme" parent="Theme.AppCompat.DayNight.Dialog">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+</style>
+<style name="addOrEditDialogFragmentTheme">
+    <item name="android:backgroundDimEnabled">true</item>
+    <item name="android:cacheColorHint">@android:color/transparent</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowTitleStyle">@style/addOrEditDialogTitle</item>
+
+</style>
+    <style name="addOrEditDialogTitle">
+        <item name="android:textAppearance">@android:style/TextAppearance.DialogWindowTitle</item>
+        <item name="android:textSize">@dimen/font_size</item>
     </style>
+
+
+
 
 </resources>
