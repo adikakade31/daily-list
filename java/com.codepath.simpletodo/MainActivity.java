@@ -1,103 +1,71 @@
 package com.codepath.simpletodo;
 
+import android.app.ActivityGroup;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Toast;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.TabHost;
+import java.util.Date;
+import java.util.Calendar;
+import android.widget.TabHost.OnTabChangeListener;
 
-import org.apache.commons.io.FileUtils;
+import android.widget.DatePicker.OnDateChangedListener;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
+@SuppressWarnings("deprecation")
+public class MainActivity extends ActivityGroup {
 
-public class MainActivity extends AppCompatActivity {
-    ArrayList<String> todoItems;
-    ArrayAdapter<String> aToDoAdapter;
-    ListView lvItems;
-    EditText etEditText;
-    private final int REQUEST_CODE = 20;
+    DatePicker datePicker;
+    TabHost tabHostWindow;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lvItems = (ListView) findViewById(R.id.lvItems);
-        populateArrayItems();
-        lvItems.setAdapter(aToDoAdapter);
-        etEditText = (EditText) findViewById(R.id.etEditText);
-        lvItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
+        datePicker = (DatePicker) findViewById(R.id.datePicker);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        OnDateChangedListener dateChangeListener = new OnDateChangedListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
-              long id){
-                todoItems.remove(position);
-                aToDoAdapter.notifyDataSetChanged();
-                writeItems();
-                return true;
+            public void onDateChanged(DatePicker view, int year, int monthOfYear,
+                                      int dayOfMonth) {
+                NotesTabActivity.reRender(getDate(year, monthOfYear,dayOfMonth));
+                TodosTabActivity.reRender(getDate(year, monthOfYear,dayOfMonth));
             }
-        });
-        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(MainActivity.this, EditItemActivity.class);
-                i.putExtra("itemText", todoItems.get(position));
-                i.putExtra("position", position);
-                //startActivity(i);
-                startActivityForResult(i, REQUEST_CODE);
-            }
-        });
+        };
+
+
+
+        datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), dateChangeListener);
+
+        tabHostWindow = (TabHost)findViewById(R.id.tabHost);
+        tabHostWindow.setup(this.getLocalActivityManager());
+        //Tab for displaying to-do items
+        TabHost.TabSpec todoTab = tabHostWindow.newTabSpec(CommonConstants.ToDoTabNAme);
+        Intent todoTabIntent = new Intent(this,TodosTabActivity.class);
+        todoTabIntent.putExtra(CommonConstants.date, getDate(datePicker.getYear(), datePicker.getMonth(),datePicker.getDayOfMonth()));
+        //todoTabIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        todoTab.setContent(todoTabIntent);
+        todoTab.setIndicator(CommonConstants.ToDoTabNAme);
+        tabHostWindow.addTab(todoTab);
+        //Tab for displaying notes
+        TabHost.TabSpec notesTab = tabHostWindow.newTabSpec(CommonConstants.NotesTabNAme);
+        Intent notesTabIntent = new Intent(this,NotesTabActivity.class);
+        notesTabIntent.putExtra(CommonConstants.date, getDate(datePicker.getYear(), datePicker.getMonth(),datePicker.getDayOfMonth()));
+        //notesTabIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        notesTab.setContent(notesTabIntent);
+        notesTab.setIndicator(CommonConstants.NotesTabNAme);
+        tabHostWindow.addTab(notesTab);
     }
 
-    public void populateArrayItems(){
-      readItems();
-        aToDoAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, todoItems);
-
-    }
-
-    private void readItems(){
-        File filesDir = getFilesDir();
-        File file = new File(filesDir, "todo.txt");
-        try{
-            todoItems = new ArrayList<String>(FileUtils.readLines(file));
-
-        }catch(IOException e){
-            todoItems = new ArrayList<String>();
-
-        }
-    }
-
-    private void writeItems(){
-        File filesDir = getFilesDir();
-        File file = new File(filesDir, "todo.txt");
-        try{
-            FileUtils.writeLines(file, todoItems);
-
-        }catch(IOException e){
-            e.printStackTrace();
-
-        }
-    }
-
-    public void onAddItem(View view){
-        aToDoAdapter.add(etEditText.getText().toString());
-        etEditText.setText("");
-        writeItems();
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
-            String editedItemText = data.getExtras().getString("itemText");
-            int position = data.getExtras().getInt("position", 0);
-            todoItems.remove(position);
-            todoItems.add(position, editedItemText);
-            aToDoAdapter.notifyDataSetChanged();
-            writeItems();
-        }
+    /*
+    Get selected date in String format
+     */
+    public String getDate(int year, int month, int day){
+        Date datePickerDate = new Date(year - 1900, month, day);
+        return CommonDateFunctions.convertDateToMMDDYYYY(datePickerDate);
     }
 }
