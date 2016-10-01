@@ -1,12 +1,12 @@
-# Pre-work - Daily List
+# Pre-work - Forget Me Not
 
-Daily List is an android app that allows building a todo list and basic todo items management functionality including adding new items, editing and deleting an existing item.
+Forget Me Not is an android app that allows building a todo list and basic todo items management functionality including adding new items, editing and deleting an existing item.
 
 Submitted by: Aditi Kakade
 
-Time spent: 4 hours spent in total
+Time spent: 30 hours spent in total
 
-User Stories
+## User Stories
 
 The following **required** functionality is completed:
 
@@ -14,12 +14,23 @@ The following **required** functionality is completed:
 2. User can **tap a todo item in the list and bring up an edit screen for the todo item** and then have any changes to the text reflected in the todo list.
 3. User can **persist todo items** and retrieve them properly on app restart
 
+The following **optional** features are implemented:
+
+4. Persist the todo items [into SQLite](http://guides.codepath.com/android/Persisting-Data-to-the-Device#sqlite) instead of a text file
+5. Improve style of the todo items in the list [using a custom adapter](http://guides.codepath.com/android/Using-an-ArrayAdapter-with-ListView)
+6. Add support for completion due dates for todo items (and display within listview item)
+7. Use a [DialogFragment](http://guides.codepath.com/android/Using-DialogFragment) instead of new Activity for editing items
+8. Tweak the style improving the UI / UX, play with colors, images or backgrounds
+
+The following **additional** features are implemented:
+
+9. Added Notes section
 
 Video Walkthrough- 
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://cloud.githubusercontent.com/assets/22045135/18651962/96a3d916-7e83-11e6-8bfa-ee6d24f7ee20.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://cloud.githubusercontent.com/assets/22045135/19011667/7f8724cc-8752-11e6-9440-c03dac1edcc5.gif' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
